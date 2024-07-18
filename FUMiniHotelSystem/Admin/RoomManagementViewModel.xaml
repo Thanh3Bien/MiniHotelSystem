@@ -1,0 +1,77 @@
+﻿<Window x:Class="FUMiniHotelSystem.Admin.RoomManagementViewModel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FUMiniHotelSystem.Admin"
+        mc:Ignorable="d"
+        Title="RoomManagementViewModel" Height="550" Width="800">
+    <Grid Loaded="Window_Loaded">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Background="LightBlue"  Orientation ="Vertical" 
+            HorizontalAlignment="Left" Grid.Column="0">
+            <Label Name="lblInstruction" Foreground="Red" FontWeight="Bold" 
+            FontSize="20" Content="Room Information"/>
+
+            <Label Name="lblRoomId" Content="RoomId" FontWeight="Bold"/>
+            <TextBox Name="txtRoomId" HorizontalAlignment="Left" 
+                 IsReadOnly="True" Height="25" Width="300"
+                 Text="{Binding Path=RoomId, Mode=OneWay}"  
+                 DataContext="{Binding ElementName=lvRooms, Path=SelectedItem}" />
+
+            <Label Name="lblRoomNumber" Content="RoomNumber" FontWeight="Bold"/>
+            <TextBox Name="txtRoomNumber" HorizontalAlignment="Left" 
+                 Height="25" Width="300"
+                 Text="{Binding Path=RoomNumber, Mode=OneWay}"  
+                 DataContext="{Binding ElementName=lvRooms, Path=SelectedItem}" />
+            <Label Name="lblRoomDetailDescription" Content="RoomDetailDescription" FontWeight="Bold"/>
+            <TextBox Name="txtRoomDetailDescription" HorizontalAlignment="Left" 
+                 Height="25" Width="300"
+                 Text="{Binding Path=RoomDetailDescription, Mode=OneWay}"  
+                 DataContext="{Binding ElementName=lvRooms, Path=SelectedItem}" />
+            <Label Name="lblRoomMaxCapacity" Content="RoomMaxCapacity" FontWeight="Bold"/>
+            <TextBox Name="txtRoomMaxCapacity" HorizontalAlignment="Left" 
+                 Height="25" Width="300"
+                 Text="{Binding Path=RoomMaxCapacity, Mode=OneWay}"  
+                 DataContext="{Binding ElementName=lvRooms, Path=SelectedItem}" />
+            <Label Name="lblRoomTypeId" Content="RoomTypeId" FontWeight="Bold"/>
+            <TextBox Name="txtRoomTypeId" HorizontalAlignment="Left" 
+                 Height="25" Width="300"
+                 Text="{Binding Path=RoomTypeId, Mode=OneWay}"  
+                 DataContext="{Binding ElementName=lvRooms, Path=SelectedItem}" />
+            <Label Name="lblRoomStatus" Content="RoomStatus" FontWeight="Bold"/>
+            <TextBox Name="txtRoomStatus" HorizontalAlignment="Left" 
+                 Height="25" Width="300"
+                 Text="{Binding Path=RoomStatus, Mode=OneWay}"  
+                 DataContext="{Binding ElementName=lvRooms, Path=SelectedItem}" />
+            <Label Name="lblRoomPricePerDay" Content="RoomPricePerDay" FontWeight="Bold"/>
+            <TextBox Name="txtRoomPricePerDay" HorizontalAlignment="Left" 
+                 Height="25" Width="300"
+                 Text="{Binding Path=RoomPricePerDay, Mode=OneWay}"  
+                 DataContext="{Binding ElementName=lvRooms, Path=SelectedItem}" />
+            <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left">
+                <Button x:Name="btnInsert" Margin="10" Width="80" Content="Insert" Click="btnInsert_Click" Background="#FF54BA3C" FontWeight="Bold" />
+                <Button x:Name="btnUpdate"  Margin="10" Width="80"  Content="Update" Click="btnUpdate_Click" Background="#FFF48355" FontWeight="Bold" />
+                <Button x:Name="btnDelete" Margin="10"  Width="80" Content="Delete" Click="btnDelete_Click" Background="#FFD93838" FontWeight="Bold" />
+            </StackPanel>
+            <Button x:Name="btnBack" Margin="10"  Width="80" Content="Back" Click="btnBack_Click" FontWeight="Bold" />
+        </StackPanel>
+        <ListView Grid.Column="1" Name="lvRooms" ItemsSource="{Binding}" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Room ID" DisplayMemberBinding="{Binding Path=RoomId }"/>
+                    <GridViewColumn Header="RoomNumber" DisplayMemberBinding="{Binding Path=RoomNumber}" />
+                    <GridViewColumn Header="RoomDetailDescription" DisplayMemberBinding="{Binding Path=RoomDetailDescription}" />
+                    <GridViewColumn Header="RoomMaxCapacity" DisplayMemberBinding="{Binding Path=RoomMaxCapacity}" />
+                    <GridViewColumn Header="RoomTypeId" DisplayMemberBinding="{Binding Path=RoomTypeId}" />
+                    <GridViewColumn Header="RoomStatus" DisplayMemberBinding="{Binding Path=RoomStatus}" />
+                    <GridViewColumn Header="RoomPricePerDay" DisplayMemberBinding="{Binding Path=RoomPricePerDay}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Content="New" HorizontalAlignment="Left" Margin="225,38,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.818,0.055" Width="37" Click="ButtonNew_Click" Background="#FF4BA9DF" FontWeight="Bold"/>
+    </Grid>
+</Window>
